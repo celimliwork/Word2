@@ -1,0 +1,198 @@
+# YDS Kelime İşleme Otomasyon Görevi
+
+## 🎯 GÖREV TANIMI
+Bu prompt size verildiğinde, belirtilen klasördeki kelime resimlerini analiz edip JSON formatında kelime verisi oluşturacaksınız.
+
+## 📋 KULLANICI NE YAPACAK
+1. `images/N/` klasörü oluşturur (N = set numarası: 1, 2, 3...)
+2. Kelime listesi resimlerini bu klasöre koyar
+3. Size der: "**images/N/ klasörü için bu prompt'u çalıştır**"
+
+## 🤖 SİZ NE YAPACAKSINIZ
+
+### ADIM 1: Klasörü Kontrol Et
+- Belirtilen klasörün var olduğunu kontrol edin
+- İçindeki tüm resim dosyalarını listeleyin (jpg, jpeg, png)
+- Kaç resim olduğunu bildirin
+
+### ADIM 2: Resimleri Analiz Et
+- Her resmi okuyun
+- Resimlerdeki **TÜM kelimeleri** çıkarın (hiç atlamayın!)
+- Her kelime için şu bilgileri toplayın:
+  * İngilizce kelime
+  * Kelime türü (adj, noun, verb, adv)
+  * Türkçe anlamlar (primary + secondary)
+  * Eş anlamlılar (synonyms)
+  * Zıt anlamlılar (antonyms)
+  * Örnek cümle (İngilizce)
+  * Cümle çevirisi (Türkçe)
+  * Diğer formlar (noun, verb, adj, adv halleri)
+
+### ADIM 3: JSON Oluştur
+- Aşağıdaki şemayı MUTLAKA kullanın
+- Tüm kelimeleri vocabulary.json dosyasına yazın
+- Dosyayı `images/N/vocabulary.json` olarak kaydedin
+
+### ADIM 4: Doğrula ve Raporla
+- JSON'un geçerli olduğunu kontrol edin
+- Toplam kelime sayısını bildirin
+- İstatistikleri gösterin
+- İşlemin tamamlandığını onaylayın
+
+---
+
+## 📄 ZORUNLU JSON ŞEMASI
+
+```json
+{
+  "setInfo": {
+    "setId": <klasör_numarası>,
+    "title": "YDS 60 Günde - <N>. Gün",
+    "totalWords": <toplam_kelime_sayısı>,
+    "difficulty": "intermediate",
+    "category": "general",
+    "createdAt": "<YYYY-MM-DD>",
+    "source": "YDS Kelime Kitabı",
+    "tags": ["yds", "vocabulary", "english", "day<N>"]
+  },
+  "words": [
+    {
+      "id": 1,
+      "word": "<kelime_küçük_harf>",
+      "type": "adjective|noun|verb|adverb",
+      "phonetic": "/<IPA_fonetik>/",
+      "meanings": {
+        "primary": ["<birincil_anlam_1>", "<birincil_anlam_2>"],
+        "secondary": ["<ikincil_anlam_1>"]
+      },
+      "synonyms": ["<eş_anlamlı_1>", "<eş_anlamlı_2>", "..."],
+      "antonyms": ["<zıt_anlamlı_1>", "<zıt_anlamlı_2>", "..."],
+      "exampleSentence": "<İngilizce örnek cümle>",
+      "sentenceTranslation": "<Türkçe çeviri>",
+      "otherForms": {
+        "noun": "<isim_hali>",
+        "verb": "<fiil_hali>",
+        "adjective": "<sıfat_hali>",
+        "adverb": "<zarf_hali>"
+      },
+      "tips": "<kullanım_ipucu>",
+      "difficultyLevel": 1-5,
+      "frequency": "low|medium|high|very high"
+    }
+  ],
+  "statistics": {
+    "totalVerbs": <fiil_sayısı>,
+    "totalNouns": <isim_sayısı>,
+    "totalAdjectives": <sıfat_sayısı>,
+    "totalAdverbs": <zarf_sayısı>,
+    "averageDifficulty": <ortalama_zorluk>
+  }
+}
+```
+
+---
+
+## ⚠️ ÖNEMLİ KURALLAR
+
+1. **Tüm Kelimeleri Çıkarın** - Hiç kelime atlamayın
+2. **Şemaya Uyun** - JSON formatı yukarıdaki gibi olmalı
+3. **Türkçe Karakter** - UTF-8 encoding kullanın
+4. **Sıralı ID** - Kelime ID'leri 1'den başlayarak sıralı
+5. **Boş Bırakmayın** - Eğer bilgi yoksa boş array [] kullanın
+6. **Virgül Kontrolü** - JSON syntax hatası olmamalı
+7. **totalWords** - setInfo'daki sayı ile words array uzunluğu aynı olmalı
+
+---
+
+## 🎮 SİSTEM MİMARİSİ
+
+### Klasör Yapısı
+```
+yds/
+├── game.html              # TEK OYUN DOSYASI (tüm setler için)
+└── images/
+    ├── 1/
+    │   └── vocabulary.json
+    ├── 2/
+    │   └── vocabulary.json
+    └── ...
+```
+
+### Oyun Nasıl Çalışır
+1. Kullanıcı `game.html` açar (ana klasörde)
+2. Oyun otomatik olarak `images/` altındaki tüm setleri tarar (1-100)
+3. Kullanıcı bir set seçer
+4. Oyun o setin `vocabulary.json` dosyasını yükler
+5. Kullanıcı öğrenme modunu seçer
+6. Oyun başlar
+
+### 6 Öğrenme Modu
+1. 📖 Kelime → Anlam
+2. 🔤 Anlam → Kelime
+3. 🔄 Eş Anlamlı Bulma
+4. ↔️ Zıt Anlamlı Bulma
+5. ✏️ Boşluk Doldurma
+6. 🎴 Hızlı Kart (Flash Card)
+
+---
+
+## 🔄 ÖRNEK ÇALIŞMA AKIŞI
+
+```
+KULLANICI: "images/2/ klasörü için bu prompt'u çalıştır"
+
+SİZ:
+1. ✓ images/2/ klasörünü kontrol ettim
+2. ✓ 4 resim buldum:
+   - WhatsApp Image 1.jpeg
+   - WhatsApp Image 2.jpeg
+   - WhatsApp Image 3.jpeg
+   - WhatsApp Image 4.jpeg
+3. ✓ Resimleri analiz ediyorum...
+   [Her resmi göster ve kelimeleri say]
+4. ✓ Toplam 22 kelime çıkardım
+5. ✓ JSON oluşturuldu: images/2/vocabulary.json
+6. ✓ İstatistikler:
+   - Fiiller: 8
+   - İsimler: 5
+   - Sıfatlar: 9
+   - Ortalama Zorluk: 2.7
+
+✅ İşlem tamamlandı! 
+Tarayıcıda game.html'i yenileyin, Set 2 görünecek.
+```
+
+---
+
+## 📊 İSTATİSTİK RAPORU
+
+Her işlem sonunda şunları bildirin:
+- ✅ İşlenen resim sayısı
+- ✅ Çıkarılan kelime sayısı
+- ✅ Kelime türleri dağılımı (kaç fiil, kaç isim vb.)
+- ✅ Oluşturulan dosya yolu
+- ✅ Ortalama zorluk seviyesi
+
+---
+
+## 💡 İPUÇLARI
+
+- Resimler JPEG/JPG/PNG formatında olabilir
+- Kelime sayısı değişken (15-30 arası normal)
+- Bazı kelimelerde synonym/antonym olmayabilir → boş array [] bırakın
+- Fonetik bilgi yoksa yaklaşık yazabilirsiniz
+- Her kelime için example sentence MUTLAKA olmalı
+- Resimlerdeki kelime sırası önemli değil, tamamını çıkarın
+
+---
+
+## ✅ HAZIR MISINIZ?
+
+Kullanıcı size **"images/N/ klasörü için bu prompt'u çalıştır"** dediğinde:
+1. Klasörü kontrol edin
+2. Tüm resimleri okuyun
+3. Tüm kelimeleri çıkarın
+4. JSON oluşturun
+5. İstatistikleri bildirin
+
+**BAŞLA!**

@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YDS Kelime Öğrenme Oyunu</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 800px;
+            width: 100%;
+            padding: 40px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 32px;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 30px;
+            gap: 15px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 12px;
+            flex: 1;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .stat-card h3 {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+
+        .stat-card p {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .set-selector {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .set-selector h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .set-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .set-card {
+            background: white;
+            border: 2px solid #e9ecef;
+            padding: 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .set-card:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+        }
+
+        .set-card.selected {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: #667eea;
+        }
+
+        .set-number {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .set-info {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        .mode-selector {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .mode-btn {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            padding: 15px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .mode-btn:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+        }
+
+        .mode-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: #667eea;
+        }
+
+        .game-area {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            min-height: 300px;
+            display: none;
+        }
+
+        .game-area.active {
+            display: block;
+        }
+
+        .question {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .hint {
+            text-align: center;
+            color: #667eea;
+            font-size: 16px;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .option {
+            background: white;
+            border: 2px solid #e9ecef;
+            padding: 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .option:hover {
+            border-color: #667eea;
+            transform: scale(1.02);
+        }
+
+        .option.correct {
+            background: #d4edda;
+            border-color: #28a745;
+            animation: pulse 0.5s;
+        }
+
+        .option.incorrect {
+            background: #f8d7da;
+            border-color: #dc3545;
+            animation: shake 0.5s;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        .next-btn, .start-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 12px;
+            font-size: 18px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto 0;
+            transition: all 0.3s;
+        }
+
+        .next-btn:hover, .start-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .next-btn:disabled, .start-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .feedback {
+            text-align: center;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .feedback.correct {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .feedback.incorrect {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.5s;
+        }
+
+        .flash-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            min-height: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            position: relative;
+        }
+
+        .flash-card.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .card-front, .card-back {
+            backface-visibility: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .card-back {
+            transform: rotateY(180deg);
+        }
+
+        .word-display {
+            font-size: 48px;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .type-display {
+            font-size: 18px;
+            color: #999;
+            font-style: italic;
+        }
+
+        .meaning-display {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .example-display {
+            font-size: 16px;
+            color: #666;
+            font-style: italic;
+            border-left: 3px solid #667eea;
+            padding-left: 15px;
+            margin-top: 15px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            font-size: 18px;
+            color: #666;
+        }
+
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .resume-banner {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffe69c 100%);
+            border: 2px solid #ffc107;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .resume-banner h3 {
+            color: #856404;
+            margin-bottom: 8px;
+            font-size: 18px;
+        }
+
+        .resume-banner p {
+            color: #664d03;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .resume-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .resume-btn {
+            border: none;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .resume-btn.continue {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .resume-btn.discard {
+            background: white;
+            color: #666;
+            border: 2px solid #dee2e6;
+        }
+
+        .phase-badge {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            font-size: 12px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .options {
+                grid-template-columns: 1fr;
+            }
+
+            .mode-selector {
+                grid-template-columns: 1fr;
+            }
+
+            .set-grid {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎓 YDS Kelime Öğrenme Oyunu</h1>
+            <p id="headerInfo">Set seçin ve öğrenmeye başlayın</p>
+        </div>
+
+        <!-- Set Seçimi -->
+        <div class="set-selector" id="setSelector">
+            <div class="resume-banner hidden" id="resumeBanner">
+                <h3>📌 Kaldığın yer kayıtlı</h3>
+                <p id="resumeBannerText"></p>
+                <div class="resume-actions">
+                    <button type="button" class="resume-btn continue" onclick="resumeSavedGame()">Kaldığın Yerden Devam Et</button>
+                    <button type="button" class="resume-btn discard" onclick="discardSavedProgress()">Kaydı Sil</button>
+                </div>
+            </div>
+            <h2>Kelime Setini Seçin</h2>
+            <div class="loading" id="setsLoading">Setler yükleniyor...</div>
+            <div class="set-grid hidden" id="setGrid"></div>
+            <button class="start-btn hidden" id="startGameBtn" onclick="startGameWithSet()">Oyuna Başla →</button>
+        </div>
+
+        <!-- İstatistikler -->
+        <div class="stats hidden" id="statsArea">
+            <div class="stat-card">
+                <h3>Soru</h3>
+                <p id="questionNumber">0/0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Doğru</h3>
+                <p id="correctCount">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Yanlış</h3>
+                <p id="incorrectCount">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Puan</h3>
+                <p id="score">0</p>
+            </div>
+        </div>
+
+        <div class="progress-bar hidden" id="progressBarContainer">
+            <div class="progress-fill" id="progressBar"></div>
+        </div>
+
+        <!-- Mod Seçimi -->
+        <div class="hidden" id="modeSelector">
+            <h2 style="text-align: center; margin-bottom: 20px; color: #333;">Öğrenme Modunu Seç</h2>
+            
+            <div class="mode-selector">
+                <div class="mode-btn" data-mode="word-to-meaning">
+                    <h3>📖 Kelime → Anlam</h3>
+                    <p style="font-size: 14px; color: #666; margin-top: 5px;">Kelimenin anlamını bul</p>
+                </div>
+                <div class="mode-btn" data-mode="meaning-to-word">
+                    <h3>🔤 Anlam → Kelime</h3>
+                    <p style="font-size: 14px; color: #666; margin-top: 5px;">Anlama uygun kelimeyi bul</p>
+                </div>
+                <div class="mode-btn" data-mode="synonym">
+                    <h3>🔄 Eş Anlamlı</h3>
+                    <p style="font-size: 14px; color: #666; margin-top: 5px;">Eş anlamlıyı seç</p>
+                </div>
+                <div class="mode-btn" data-mode="antonym">
+                    <h3>↔️ Zıt Anlamlı</h3>
+                    <p style="font-size: 14px; color: #666; margin-top: 5px;">Zıt anlamı bul</p>
+                </div>
+                <div class="mode-btn" data-mode="fill-blank">
+                    <h3>✏️ Boşluk Doldur</h3>
+                    <p style="font-size: 14px; color: #666; margin-top: 5px;">Cümleyi tamamla</p>
+                </div>
+                <div class="mode-btn" data-mode="flash-card">
+                    <h3>🎴 Hızlı Kart</h3>
+                    <p style="font-size: 14px; color: #666; margin-top: 5px;">Flash card çalışması</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Oyun Alanı -->
+        <div class="game-area" id="gameArea"></div>
+    </div>
+
+    <script>
+        const STORAGE_KEY = 'yds-game-progress';
+        const MODE_LABELS = {
+            'word-to-meaning': 'Kelime → Anlam',
+            'meaning-to-word': 'Anlam → Kelime',
+            'synonym': 'Eş Anlamlı',
+            'antonym': 'Zıt Anlamlı',
+            'fill-blank': 'Boşluk Doldur',
+            'flash-card': 'Hızlı Kart'
+        };
+
+        let availableSets = [];
+        let selectedSetId = null;
+        let vocabulary = null;
+        let currentMode = null;
+        let currentQuestionIndex = 0;
+        let correctAnswers = 0;
+        let incorrectAnswers = 0;
+        let score = 0;
+        let currentAnswer = null;
+        let wrongWordIndices = [];
+        let isReviewMode = false;
+        let reviewQueue = [];
+        let reviewIndex = 0;
+        let reviewCorrect = 0;
+        let modeListenersAttached = false;
+
+        function loadProgress() {
+            try {
+                const raw = localStorage.getItem(STORAGE_KEY);
+                return raw ? JSON.parse(raw) : null;
+            } catch {
+                return null;
+            }
+        }
+
+        function saveProgress() {
+            if (!selectedSetId || !currentMode || !vocabulary) return;
+
+            const data = {
+                setId: selectedSetId,
+                setTitle: vocabulary.setInfo?.title || `Set ${selectedSetId}`,
+                mode: currentMode,
+                questionIndex: currentQuestionIndex,
+                correctAnswers,
+                incorrectAnswers,
+                score,
+                wrongWordIndices: [...wrongWordIndices],
+                isReviewMode,
+                reviewQueue: [...reviewQueue],
+                reviewIndex,
+                reviewCorrect,
+                savedAt: Date.now()
+            };
+
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        }
+
+        function clearProgress() {
+            localStorage.removeItem(STORAGE_KEY);
+        }
+
+        function getModeLabel(mode) {
+            return MODE_LABELS[mode] || mode;
+        }
+
+        function formatSavedDate(timestamp) {
+            if (!timestamp) return '';
+            return new Date(timestamp).toLocaleString('tr-TR', {
+                day: 'numeric',
+                month: 'short',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        }
+
+        function showResumeBanner() {
+            const saved = loadProgress();
+            const banner = document.getElementById('resumeBanner');
+            const text = document.getElementById('resumeBannerText');
+
+            if (!saved || !saved.setId || !saved.mode) {
+                banner.classList.add('hidden');
+                return;
+            }
+
+            const total = saved.isReviewMode
+                ? (saved.reviewQueue?.length || 0)
+                : '?';
+            const current = saved.isReviewMode
+                ? (saved.reviewIndex || 0)
+                : (saved.questionIndex || 0);
+            const phase = saved.isReviewMode
+                ? `Tekrar turu (${current}/${total})`
+                : `Soru ${current}`;
+
+            text.textContent = `Set ${saved.setId} · ${getModeLabel(saved.mode)} · ${phase} · Puan: ${saved.score || 0} · Son kayıt: ${formatSavedDate(saved.savedAt)}`;
+            banner.classList.remove('hidden');
+        }
+
+        function discardSavedProgress() {
+            if (!confirm('Kayıtlı ilerlemen silinsin mi?')) return;
+            clearProgress();
+            document.getElementById('resumeBanner').classList.add('hidden');
+        }
+
+        async function resumeSavedGame() {
+            const saved = loadProgress();
+            if (!saved) return;
+
+            try {
+                const response = await fetch(`images/${saved.setId}/vocabulary.json`);
+                if (!response.ok) throw new Error('Set bulunamadı');
+
+                vocabulary = await response.json();
+                selectedSetId = saved.setId;
+                currentMode = saved.mode;
+                currentQuestionIndex = saved.questionIndex || 0;
+                correctAnswers = saved.correctAnswers || 0;
+                incorrectAnswers = saved.incorrectAnswers || 0;
+                score = saved.score || 0;
+                wrongWordIndices = saved.wrongWordIndices || [];
+                isReviewMode = !!saved.isReviewMode;
+                reviewQueue = saved.reviewQueue || [];
+                reviewIndex = saved.reviewIndex || 0;
+                reviewCorrect = saved.reviewCorrect || 0;
+
+                document.getElementById('setSelector').classList.add('hidden');
+                document.getElementById('modeSelector').classList.add('hidden');
+                document.getElementById('statsArea').classList.remove('hidden');
+                document.getElementById('progressBarContainer').classList.remove('hidden');
+                document.getElementById('gameArea').classList.add('active');
+                document.getElementById('headerInfo').textContent =
+                    (vocabulary.setInfo?.title || `Set ${saved.setId}`) +
+                    (isReviewMode ? ' · Tekrar turu' : ' · Devam ediliyor');
+
+                updateStats();
+                nextQuestion();
+            } catch (error) {
+                alert('❌ Kayıt yüklenemedi: ' + error.message);
+                clearProgress();
+                showResumeBanner();
+            }
+        }
+
+        function attachModeListeners() {
+            if (modeListenersAttached) return;
+            modeListenersAttached = true;
+
+            document.querySelectorAll('.mode-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentMode = btn.dataset.mode;
+                    startGame(true);
+                });
+            });
+        }
+
+        function getActiveWord() {
+            if (isReviewMode) {
+                const wordIndex = reviewQueue[reviewIndex];
+                return vocabulary.words[wordIndex];
+            }
+            return vocabulary.words[currentQuestionIndex];
+        }
+
+        function skipCurrentQuestion() {
+            currentQuestionIndex++;
+            saveProgress();
+            nextQuestion();
+        }
+
+        function advanceFlashCard() {
+            currentQuestionIndex++;
+            saveProgress();
+            nextQuestion();
+        }
+
+        // Sayfa yüklendiğinde setleri tespit et
+        window.addEventListener('DOMContentLoaded', detectAvailableSets);
+        window.addEventListener('beforeunload', () => saveProgress());
+
+        async function detectAvailableSets() {
+            const setsLoading = document.getElementById('setsLoading');
+            const setGrid = document.getElementById('setGrid');
+            
+            // 1'den 100'e kadar setleri kontrol et
+            const promises = [];
+            for (let i = 1; i <= 100; i++) {
+                promises.push(checkSetExists(i));
+            }
+
+            const results = await Promise.all(promises);
+            availableSets = results.filter(set => set !== null);
+
+            setsLoading.classList.add('hidden');
+
+            if (availableSets.length === 0) {
+                setGrid.innerHTML = '<div class="error">❌ Hiç kelime seti bulunamadı!<br>images/ klasörü altında vocabulary.json dosyaları olmalı.</div>';
+                setGrid.classList.remove('hidden');
+                return;
+            }
+
+            // Setleri göster
+            renderSetCards();
+            showResumeBanner();
+        }
+
+        async function checkSetExists(setId) {
+            try {
+                const response = await fetch(`images/${setId}/vocabulary.json`);
+                if (response.ok) {
+                    const data = await response.json();
+                    return {
+                        id: setId,
+                        title: data.setInfo?.title || `Set ${setId}`,
+                        totalWords: data.setInfo?.totalWords || data.words?.length || 0,
+                        difficulty: data.setInfo?.difficulty || 'intermediate'
+                    };
+                }
+            } catch (e) {
+                // Set yok, devam et
+            }
+            return null;
+        }
+
+        function renderSetCards() {
+            const setGrid = document.getElementById('setGrid');
+            setGrid.innerHTML = '';
+            setGrid.classList.remove('hidden');
+
+            availableSets.forEach(set => {
+                const card = document.createElement('div');
+                card.className = 'set-card';
+                card.dataset.setId = set.id;
+                card.innerHTML = `
+                    <div class="set-number">${set.id}</div>
+                    <div class="set-info">${set.totalWords} kelime</div>
+                `;
+                card.onclick = () => selectSet(set.id);
+                setGrid.appendChild(card);
+            });
+        }
+
+        function selectSet(setId) {
+            selectedSetId = setId;
+            
+            // Görsel güncelleme
+            document.querySelectorAll('.set-card').forEach(card => {
+                card.classList.remove('selected');
+                if (parseInt(card.dataset.setId) === setId) {
+                    card.classList.add('selected');
+                }
+            });
+
+            // Başlat butonunu göster
+            document.getElementById('startGameBtn').classList.remove('hidden');
+        }
+
+        async function startGameWithSet() {
+            if (!selectedSetId) return;
+
+            // Set verisini yükle
+            try {
+                const response = await fetch(`images/${selectedSetId}/vocabulary.json`);
+                vocabulary = await response.json();
+
+                // UI güncellemeleri
+                document.getElementById('setSelector').classList.add('hidden');
+                document.getElementById('modeSelector').classList.remove('hidden');
+                document.getElementById('headerInfo').textContent = vocabulary.setInfo?.title || `Set ${selectedSetId}`;
+
+                attachModeListeners();
+            } catch (error) {
+                alert('❌ Kelime seti yüklenirken hata oluştu: ' + error.message);
+            }
+        }
+
+        function startGame(freshStart = true) {
+            if (freshStart) {
+                const saved = loadProgress();
+                if (saved && saved.setId === selectedSetId && saved.mode === currentMode && saved.questionIndex > 0) {
+                    const devam = confirm(
+                        `Bu set ve mod için kayıtlı ilerleme var (soru ${saved.questionIndex}).\n\nTamam = Kaldığın yerden devam\nİptal = Sıfırdan başla`
+                    );
+                    if (devam) {
+                        currentQuestionIndex = saved.questionIndex;
+                        correctAnswers = saved.correctAnswers || 0;
+                        incorrectAnswers = saved.incorrectAnswers || 0;
+                        score = saved.score || 0;
+                        wrongWordIndices = saved.wrongWordIndices || [];
+                        isReviewMode = !!saved.isReviewMode;
+                        reviewQueue = saved.reviewQueue || [];
+                        reviewIndex = saved.reviewIndex || 0;
+                        reviewCorrect = saved.reviewCorrect || 0;
+                    } else {
+                        resetGameState();
+                    }
+                } else {
+                    resetGameState();
+                }
+            }
+
+            document.getElementById('statsArea').classList.remove('hidden');
+            document.getElementById('progressBarContainer').classList.remove('hidden');
+            document.getElementById('modeSelector').classList.add('hidden');
+            document.getElementById('headerInfo').textContent =
+                (vocabulary.setInfo?.title || `Set ${selectedSetId}`) +
+                (isReviewMode ? ' · Tekrar turu' : '');
+
+            updateStats();
+            document.getElementById('gameArea').classList.add('active');
+            saveProgress();
+            nextQuestion();
+        }
+
+        function resetGameState() {
+            currentQuestionIndex = 0;
+            correctAnswers = 0;
+            incorrectAnswers = 0;
+            score = 0;
+            wrongWordIndices = [];
+            isReviewMode = false;
+            reviewQueue = [];
+            reviewIndex = 0;
+            reviewCorrect = 0;
+            clearProgress();
+        }
+
+        function startReviewRound() {
+            reviewQueue = [...new Set(wrongWordIndices)].sort((a, b) => a - b);
+            if (reviewQueue.length === 0) {
+                showResults(true);
+                return;
+            }
+            isReviewMode = true;
+            reviewIndex = 0;
+            reviewCorrect = 0;
+            saveProgress();
+            nextQuestion();
+        }
+
+        function nextQuestion() {
+            if (isReviewMode) {
+                if (reviewIndex >= reviewQueue.length) {
+                    showResults(true);
+                    return;
+                }
+
+                const word = getActiveWord();
+                currentAnswer = null;
+                renderQuestionForMode(word);
+                updateStats();
+                return;
+            }
+
+            if (currentQuestionIndex >= vocabulary.words.length) {
+                const uniqueWrongs = [...new Set(wrongWordIndices)];
+                if (uniqueWrongs.length > 0 && currentMode !== 'flash-card') {
+                    showMainRoundComplete(uniqueWrongs.length);
+                } else {
+                    showResults(true);
+                }
+                return;
+            }
+
+            const word = vocabulary.words[currentQuestionIndex];
+            currentAnswer = null;
+            renderQuestionForMode(word);
+            updateStats();
+        }
+
+        function renderGameContent(html) {
+            const badge = isReviewMode
+                ? '<div class="phase-badge">🔄 Yanlışları tekrar ediyorsun</div>'
+                : '';
+            document.getElementById('gameArea').innerHTML = badge + html;
+        }
+
+        function renderQuestionForMode(word) {
+            switch(currentMode) {
+                case 'word-to-meaning':
+                    renderWordToMeaning(word);
+                    break;
+                case 'meaning-to-word':
+                    renderMeaningToWord(word);
+                    break;
+                case 'synonym':
+                    renderSynonym(word);
+                    break;
+                case 'antonym':
+                    renderAntonym(word);
+                    break;
+                case 'fill-blank':
+                    renderFillBlank(word);
+                    break;
+                case 'flash-card':
+                    renderFlashCard(word);
+                    break;
+            }
+        }
+
+        function renderWordToMeaning(word) {
+            renderGameContent(`
+                <div class="question">"${word.word.toUpperCase()}" kelimesinin anlamı nedir?</div>
+                <div class="hint">(${word.type})</div>
+                <div class="options" id="options"></div>
+                <button class="next-btn" onclick="nextQuestion()" disabled id="nextBtn">Sonraki Soru →</button>
+            `);
+
+            const options = generateOptions([...word.meanings.primary, ...word.meanings.secondary][0], 'meaning');
+            renderOptions(options, word.meanings.primary[0]);
+        }
+
+        function renderMeaningToWord(word) {
+            const meaning = word.meanings.primary[0];
+
+            renderGameContent(`
+                <div class="question">"${meaning}" anlamına gelen kelime hangisidir?</div>
+                <div class="options" id="options"></div>
+                <button class="next-btn" onclick="nextQuestion()" disabled id="nextBtn">Sonraki Soru →</button>
+            `);
+
+            const options = generateOptions(word.word, 'word');
+            renderOptions(options, word.word);
+        }
+
+        function renderSynonym(word) {
+            if (!word.synonyms || word.synonyms.length === 0) {
+                if (isReviewMode) {
+                    reviewIndex++;
+                    saveProgress();
+                    nextQuestion();
+                } else {
+                    skipCurrentQuestion();
+                }
+                return;
+            }
+
+            renderGameContent(`
+                <div class="question">"${word.word.toUpperCase()}" kelimesinin eş anlamlısı hangisidir?</div>
+                <div class="hint">${word.meanings.primary[0]}</div>
+                <div class="options" id="options"></div>
+                <button class="next-btn" onclick="nextQuestion()" disabled id="nextBtn">Sonraki Soru →</button>
+            `);
+
+            const correctSynonym = word.synonyms[0];
+            const options = generateOptions(correctSynonym, 'synonym', word.synonyms);
+            renderOptions(options, correctSynonym);
+        }
+
+        function renderAntonym(word) {
+            if (!word.antonyms || word.antonyms.length === 0) {
+                if (isReviewMode) {
+                    reviewIndex++;
+                    saveProgress();
+                    nextQuestion();
+                } else {
+                    skipCurrentQuestion();
+                }
+                return;
+            }
+
+            renderGameContent(`
+                <div class="question">"${word.word.toUpperCase()}" kelimesinin zıt anlamlısı hangisidir?</div>
+                <div class="hint">${word.meanings.primary[0]}</div>
+                <div class="options" id="options"></div>
+                <button class="next-btn" onclick="nextQuestion()" disabled id="nextBtn">Sonraki Soru →</button>
+            `);
+
+            const correctAntonym = word.antonyms[0];
+            const options = generateOptions(correctAntonym, 'antonym', word.antonyms);
+            renderOptions(options, correctAntonym);
+        }
+
+        function renderFillBlank(word) {
+            const sentence = word.exampleSentence.replace(new RegExp(word.word, 'gi'), '______');
+
+            renderGameContent(`
+                <div class="question">Boşluğu uygun kelime ile doldurun:</div>
+                <div class="hint">"${sentence}"</div>
+                <div class="options" id="options"></div>
+                <button class="next-btn" onclick="nextQuestion()" disabled id="nextBtn">Sonraki Soru →</button>
+            `);
+
+            const options = generateOptions(word.word, 'word');
+            renderOptions(options, word.word);
+        }
+
+        function renderFlashCard(word) {
+            renderGameContent(`
+                <div class="flash-card" id="flashCard" onclick="flipCard()">
+                    <div class="card-front">
+                        <div class="word-display">${word.word.toUpperCase()}</div>
+                        <div class="type-display">(${word.type})</div>
+                        <p style="color: #999; margin-top: 20px;">Kartı çevirmek için tıkla</p>
+                    </div>
+                    <div class="card-back">
+                        <div class="meaning-display">${word.meanings.primary.join(', ')}</div>
+                        <div class="example-display">
+                            "${word.exampleSentence}"<br>
+                            <span style="color: #999; margin-top: 5px; display: block;">${word.sentenceTranslation}</span>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 20px;">
+                    <button class="next-btn" onclick="advanceFlashCard()" id="nextBtn">Biliyorum ✓</button>
+                </div>
+            `);
+        }
+
+        function flipCard() {
+            document.getElementById('flashCard').classList.toggle('flipped');
+        }
+
+        function generateOptions(correctAnswer, type, excludeList = []) {
+            const options = [correctAnswer];
+            const allWords = vocabulary.words.filter(w => !excludeList.includes(w.word));
+            
+            while(options.length < 4 && allWords.length > 0) {
+                const randomWord = allWords[Math.floor(Math.random() * allWords.length)];
+                let option;
+                
+                if (type === 'meaning') {
+                    option = [...randomWord.meanings.primary, ...randomWord.meanings.secondary][0];
+                } else if (type === 'synonym' && randomWord.synonyms.length > 0) {
+                    option = randomWord.synonyms[0];
+                } else if (type === 'antonym' && randomWord.antonyms.length > 0) {
+                    option = randomWord.antonyms[0];
+                } else {
+                    option = randomWord.word;
+                }
+                
+                if (!options.includes(option)) {
+                    options.push(option);
+                }
+                
+                allWords.splice(allWords.indexOf(randomWord), 1);
+            }
+            
+            return options.sort(() => Math.random() - 0.5);
+        }
+
+        function renderOptions(options, correctAnswer) {
+            const optionsContainer = document.getElementById('options');
+            
+            options.forEach(option => {
+                const div = document.createElement('div');
+                div.className = 'option';
+                div.textContent = option;
+                div.onclick = () => checkAnswer(div, option, correctAnswer);
+                optionsContainer.appendChild(div);
+            });
+        }
+
+        function checkAnswer(element, selected, correct) {
+            if (currentAnswer !== null) return;
+            
+            currentAnswer = selected;
+            const isCorrect = selected.toLowerCase() === correct.toLowerCase();
+            
+            document.querySelectorAll('.option').forEach(opt => {
+                opt.style.pointerEvents = 'none';
+                if (opt.textContent.toLowerCase() === correct.toLowerCase()) {
+                    opt.classList.add('correct');
+                }
+            });
+            
+            if (isReviewMode) {
+                if (isCorrect) {
+                    element.classList.add('correct');
+                    reviewCorrect++;
+                    score += 5;
+                    showFeedback('Tekrar turunda doğru! +5 puan 🎉', true);
+                } else {
+                    element.classList.add('incorrect');
+                    showFeedback('Hâlâ yanlış. Doğru cevap: ' + correct, false);
+                }
+                reviewIndex++;
+            } else {
+                const wordIdx = currentQuestionIndex;
+                if (isCorrect) {
+                    element.classList.add('correct');
+                    correctAnswers++;
+                    score += 10;
+                    showFeedback('Doğru! 🎉', true);
+                } else {
+                    element.classList.add('incorrect');
+                    incorrectAnswers++;
+                    wrongWordIndices.push(wordIdx);
+                    showFeedback('Yanlış. Doğru cevap: ' + correct, false);
+                }
+                currentQuestionIndex++;
+            }
+
+            document.getElementById('nextBtn').disabled = false;
+            saveProgress();
+            updateStats();
+        }
+
+        function showFeedback(message, isCorrect) {
+            const gameArea = document.getElementById('gameArea');
+            const feedback = document.createElement('div');
+            feedback.className = 'feedback ' + (isCorrect ? 'correct' : 'incorrect');
+            feedback.textContent = message;
+            gameArea.insertBefore(feedback, document.getElementById('nextBtn'));
+        }
+
+        function updateStats() {
+            if (isReviewMode) {
+                document.getElementById('questionNumber').textContent =
+                    `Tekrar ${reviewIndex}/${reviewQueue.length}`;
+                const progress = reviewQueue.length
+                    ? (reviewIndex / reviewQueue.length) * 100
+                    : 0;
+                document.getElementById('progressBar').style.width = progress + '%';
+            } else {
+                document.getElementById('questionNumber').textContent =
+                    `${currentQuestionIndex}/${vocabulary.words.length}`;
+                const progress = (currentQuestionIndex / vocabulary.words.length) * 100;
+                document.getElementById('progressBar').style.width = progress + '%';
+            }
+
+            document.getElementById('correctCount').textContent = correctAnswers;
+            document.getElementById('incorrectCount').textContent = incorrectAnswers;
+            document.getElementById('score').textContent = score;
+        }
+
+        function showMainRoundComplete(wrongCount) {
+            const gameArea = document.getElementById('gameArea');
+            const percentage = Math.round((correctAnswers / vocabulary.words.length) * 100);
+
+            gameArea.innerHTML = `
+                <div style="text-align: center;">
+                    <h2 style="color: #667eea; font-size: 32px; margin-bottom: 15px;">İlk tur tamamlandı! 🎯</h2>
+                    <p style="font-size: 20px; color: #333; margin-bottom: 20px;">Başarı: <strong>${percentage}%</strong></p>
+                    <div style="background: #f8f9fa; padding: 20px; border-radius: 12px; margin-bottom: 20px;">
+                        <p style="font-size: 18px; color: #28a745;">Doğru: <strong>${correctAnswers}</strong></p>
+                        <p style="font-size: 18px; color: #dc3545;">Yanlış: <strong>${incorrectAnswers}</strong></p>
+                        <p style="font-size: 18px; color: #666; margin-top: 10px;">Puan: <strong style="color: #667eea;">${score}</strong></p>
+                    </div>
+                    <p style="color: #664d03; margin-bottom: 20px;">
+                        <strong>${wrongCount}</strong> kelimeyi tekrar ederek pekiştirebilirsin.
+                    </p>
+                    <button class="next-btn" onclick="startReviewRound()">Yanlışları Tekrar Et (${wrongCount}) →</button>
+                    <button class="resume-btn discard" style="margin-top: 12px;" onclick="showResults(true)">Tekrar Etmeden Bitir</button>
+                </div>
+            `;
+            saveProgress();
+        }
+
+        function showResults(finished = false) {
+            if (finished) {
+                clearProgress();
+                document.getElementById('resumeBanner')?.classList.add('hidden');
+            }
+
+            const gameArea = document.getElementById('gameArea');
+            const total = vocabulary.words.length;
+            const percentage = total ? Math.round((correctAnswers / total) * 100) : 0;
+            const reviewBlock = reviewQueue.length > 0
+                ? `<p style="font-size: 16px; color: #28a745; margin-top: 10px;">
+                        Tekrar turu: <strong>${reviewCorrect}/${reviewQueue.length}</strong> doğru (+5 puan/tekrar)
+                   </p>`
+                : '';
+
+            gameArea.innerHTML = `
+                <div style="text-align: center;">
+                    <h2 style="color: #667eea; font-size: 36px; margin-bottom: 20px;">Tebrikler! 🎉</h2>
+                    <div style="font-size: 72px; margin: 30px 0;">${percentage >= 70 ? '🏆' : percentage >= 50 ? '👍' : '💪'}</div>
+                    <p style="font-size: 24px; color: #333; margin-bottom: 30px;">Başarı Oranın: <strong>${percentage}%</strong></p>
+                    <div style="background: #f8f9fa; padding: 20px; border-radius: 12px; margin-bottom: 20px;">
+                        <p style="font-size: 18px; color: #666;">Toplam Puan: <strong style="color: #667eea;">${score}</strong></p>
+                        <p style="font-size: 18px; color: #28a745;">Doğru: <strong>${correctAnswers}</strong></p>
+                        <p style="font-size: 18px; color: #dc3545;">Yanlış: <strong>${incorrectAnswers}</strong></p>
+                        ${reviewBlock}
+                    </div>
+                    <button class="next-btn" onclick="location.reload()">Başka Set Seç 🔄</button>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+{
+  "setInfo": {
+    "setId": 0,
+    "title": "YDS Kelime Seti - Şablon",
+    "totalWords": 0,
+    "difficulty": "intermediate",
+    "category": "general",
+    "createdAt": "YYYY-MM-DD",
+    "source": "YDS Kelime Kitabı",
+    "tags": ["yds", "vocabulary", "english"]
+  },
+  "words": [
+    {
+      "id": 1,
+      "word": "",
+      "type": "adjective/noun/verb/adverb",
+      "phonetic": "//",
+      "meanings": {
+        "primary": [],
+        "secondary": []
+      },
+      "synonyms": [],
+      "antonyms": [],
+      "exampleSentence": "",
+      "sentenceTranslation": "",
+      "otherForms": {
+        "noun": "",
+        "verb": "",
+        "adjective": "",
+        "adverb": ""
+      },
+      "tips": "",
+      "difficultyLevel": 0,
+      "frequency": "low/medium/high/very high"
+    }
+  ],
+  "statistics": {
+    "totalVerbs": 0,
+    "totalNouns": 0,
+    "totalAdjectives": 0,
+    "totalAdverbs": 0,
+    "averageDifficulty": 0
+  },
+  "_instructions": {
+    "setId": "Kelime setinin numarası (1, 2, 3...)",
+    "title": "Setin açıklayıcı başlığı",
+    "totalWords": "Setteki toplam kelime sayısı",
+    "difficulty": "beginner | elementary | intermediate | advanced | expert",
+    "category": "general | academic | business | technical | medical",
+    "word": "İngilizce kelime (küçük harf)",
+    "type": "Kelime türü: adjective, noun, verb, adverb, preposition",
+    "phonetic": "IPA fonetik gösterim",
+    "meanings.primary": "Birincil Türkçe anlamlar (array)",
+    "meanings.secondary": "İkincil/alternatif anlamlar (array)",
+    "synonyms": "Eş anlamlı kelimeler (İngilizce)",
+    "antonyms": "Zıt anlamlı kelimeler (İngilizce)",
+    "exampleSentence": "İngilizce örnek cümle",
+    "sentenceTranslation": "Cümlenin Türkçe çevirisi",
+    "otherForms": "Kelimenin farklı formları (isim, fiil, sıfat, zarf)",
+    "tips": "Kullanım ipuçları, özel notlar",
+    "difficultyLevel": "1-5 arası zorluk seviyesi",
+    "frequency": "Kelimenin kullanım sıklığı"
+  }
+}

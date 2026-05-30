@@ -1,0 +1,431 @@
+{
+  "setInfo": {
+    "setId": 1,
+    "title": "YDS 60 Günde - 1. Gün",
+    "totalWords": 20,
+    "difficulty": "intermediate",
+    "category": "general",
+    "createdAt": "2026-05-30",
+    "source": "YDS Kelime Kitabı",
+    "tags": ["yds", "vocabulary", "english", "day1"]
+  },
+  "words": [
+    {
+      "id": 1,
+      "word": "indifferent",
+      "type": "adjective",
+      "phonetic": "/ɪnˈdɪfrənt/",
+      "meanings": {
+        "primary": ["kayıtsız", "umursamaz"],
+        "secondary": ["ilgisiz", "alakasız"]
+      },
+      "synonyms": ["uninterested", "apathetic", "unconcerned", "disinterested"],
+      "antonyms": ["interested", "concerned", "attentive", "engaged"],
+      "exampleSentence": "Why don't you care how can you be so indifferent?",
+      "sentenceTranslation": "Niçin önemsemiyorsun? Nasıl bu kadar duyarsız olabilirsin?",
+      "otherForms": {
+        "noun": "indifference"
+      },
+      "tips": "Be indifferent to: -e kayıtsız olmak",
+      "difficultyLevel": 2,
+      "frequency": "high"
+    },
+    {
+      "id": 2,
+      "word": "instill",
+      "type": "verb",
+      "phonetic": "/ɪnˈstɪl/",
+      "meanings": {
+        "primary": ["aşılamak", "yüklemek"],
+        "secondary": ["yerleştirmek", "kazandırmak"]
+      },
+      "synonyms": ["fill", "inspire", "implant", "inculcate"],
+      "antonyms": ["extract", "remove", "empty"],
+      "exampleSentence": "It is part of a teacher's job to instill confidence in his or her students.",
+      "sentenceTranslation": "Öğrenciye güven aşılamak öğretmenin işinin bir parçasıdır.",
+      "otherForms": {
+        "noun": "instillation"
+      },
+      "tips": "Genellikle 'instill something in someone' yapısıyla kullanılır",
+      "difficultyLevel": 3,
+      "frequency": "medium"
+    },
+    {
+      "id": 3,
+      "word": "isolate",
+      "type": "verb",
+      "phonetic": "/ˈaɪsəleɪt/",
+      "meanings": {
+        "primary": ["soyutlamak", "tecrit etmek", "ayırmak"],
+        "secondary": ["yalıtmak"]
+      },
+      "synonyms": ["separate", "segregate", "detach", "seclude"],
+      "antonyms": ["unite", "associate", "integrate", "join"],
+      "exampleSentence": "He felt isolated when the others laughed altogether.",
+      "sentenceTranslation": "Diğerleri hep beraber güldüklerinde o kendini soyutlanmış hissetti.",
+      "otherForms": {
+        "noun": "isolation",
+        "adjective": "isolated"
+      },
+      "tips": "Hem fiziksel hem de sosyal ayrılık için kullanılır",
+      "difficultyLevel": 2,
+      "frequency": "high"
+    },
+    {
+      "id": 4,
+      "word": "spoil",
+      "type": "verb",
+      "phonetic": "/spɔɪl/",
+      "meanings": {
+        "primary": ["çürütmek", "bozulmak"],
+        "secondary": ["mahvetmek", "şımartmak"]
+      },
+      "synonyms": ["decay", "rotten", "ruin", "damage"],
+      "antonyms": ["preserve", "maintain", "protect"],
+      "exampleSentence": "The dessert will spoil if you don't keep it in the fridge.",
+      "sentenceTranslation": "Tatlıyı buzdolabında saklamazsan bozulur.",
+      "otherForms": {
+        "adjective": "spoiled",
+        "noun": "spoilage"
+      },
+      "tips": "Hem yiyecek bozulması hem de çocuk şımartma anlamında kullanılır",
+      "difficultyLevel": 1,
+      "frequency": "high"
+    },
+    {
+      "id": 5,
+      "word": "spontaneous",
+      "type": "adjective",
+      "phonetic": "/spɒnˈteɪniəs/",
+      "meanings": {
+        "primary": ["kendiliğinden olan", "doğal"],
+        "secondary": ["ani", "plansız", "içten"]
+      },
+      "synonyms": ["natural", "impulsive", "unplanned", "impromptu"],
+      "antonyms": ["planned", "artificial", "calculated", "deliberate"],
+      "exampleSentence": "His jokes seemed spontaneous, but were in fact carefully prepared beforehand.",
+      "sentenceTranslation": "Şakaları doğaçlama gibi görünyordu ama aslında daha önceden özenle hazırlanmıştı.",
+      "otherForms": {
+        "adverb": "spontaneously",
+        "noun": "spontaneity"
+      },
+      "tips": "Pozitif bir anlam taşır, doğallık ve samimiyeti vurgular",
+      "difficultyLevel": 3,
+      "frequency": "medium"
+    },
+    {
+      "id": 6,
+      "word": "exact",
+      "type": "adjective",
+      "phonetic": "/ɪɡˈzækt/",
+      "meanings": {
+        "primary": ["tam", "kesin"],
+        "secondary": ["dakik", "hassas", "net"]
+      },
+      "synonyms": ["precise", "accurate", "definite", "specific"],
+      "antonyms": ["vague", "ambiguous", "unclear", "approximate"],
+      "exampleSentence": "The exact time of the accident was 2:43 pm.",
+      "sentenceTranslation": "Kazanın tam saati 2:43 idi.",
+      "otherForms": {
+        "verb": "exact",
+        "adverb": "exactly",
+        "noun": "exactness"
+      },
+      "tips": "Kesinlik ve doğruluk vurgusunda kullanılır",
+      "difficultyLevel": 1,
+      "frequency": "very high"
+    },
+    {
+      "id": 7,
+      "word": "formidable",
+      "type": "adjective",
+      "phonetic": "/fɔːˈmɪdəbl/",
+      "meanings": {
+        "primary": ["sert", "sağlam", "yenilmez", "dayanıklı"],
+        "secondary": ["ürkütücü", "zorlu"]
+      },
+      "synonyms": ["challenging", "difficult", "invincible", "powerful"],
+      "antonyms": ["susceptible", "vulnerable", "fragile", "weak"],
+      "exampleSentence": "The Ottoman Empire was a formidable opponent for other empires.",
+      "sentenceTranslation": "Osmanlı İmparatorluğu diğer imparatorluklar için zorlu bir rakipti.",
+      "otherForms": {
+        "adverb": "formidably"
+      },
+      "tips": "Hem fiziksel hem de zihinsel güç için kullanılır",
+      "difficultyLevel": 3,
+      "frequency": "medium"
+    },
+    {
+      "id": 8,
+      "word": "graceful",
+      "type": "adjective",
+      "phonetic": "/ˈɡreɪsfəl/",
+      "meanings": {
+        "primary": ["hoş", "çekici", "zarif", "nazik"],
+        "secondary": ["ince", "güzel"]
+      },
+      "synonyms": ["attractive", "charming", "elegant", "refined"],
+      "antonyms": ["awkward", "ugly", "clumsy", "ungainly"],
+      "exampleSentence": "The player showed graceful movements.",
+      "sentenceTranslation": "Oyuncu muazzam hareketler gösterdi.",
+      "otherForms": {
+        "noun": "grace",
+        "adverb": "gracefully"
+      },
+      "tips": "Genellikle estetik ve zarif hareketler için kullanılır",
+      "difficultyLevel": 2,
+      "frequency": "medium"
+    },
+    {
+      "id": 9,
+      "word": "grasp",
+      "type": "verb",
+      "phonetic": "/ɡrɑːsp/",
+      "meanings": {
+        "primary": ["kapmak", "algılamak", "kavramak"],
+        "secondary": ["tutmak", "anlamak"]
+      },
+      "synonyms": ["snatch", "grab", "perceive", "understand"],
+      "antonyms": ["loose", "release", "misunderstand"],
+      "exampleSentence": "We must grasp every opportunity to strengthen economic ties with other countries.",
+      "sentenceTranslation": "Diğer ülkelerle ekonomik bağları güçlendirmek için her fırsatı yakalamalıyız.",
+      "otherForms": {
+        "noun": "grasp"
+      },
+      "tips": "Hem fiziksel tutma hem de zihinsel kavrama için kullanılır",
+      "difficultyLevel": 2,
+      "frequency": "high"
+    },
+    {
+      "id": 10,
+      "word": "humid",
+      "type": "adjective",
+      "phonetic": "/ˈhjuːmɪd/",
+      "meanings": {
+        "primary": ["nemli"],
+        "secondary": ["rutubetli", "ıslak"]
+      },
+      "synonyms": ["damp", "moist", "wet", "muggy"],
+      "antonyms": ["dry", "arid"],
+      "exampleSentence": "New York is very hot and humid in the summer.",
+      "sentenceTranslation": "New York yazları çok sıcak ve nemli olur.",
+      "otherForms": {
+        "noun": "humidity"
+      },
+      "tips": "Hava durumu ve iklim tanımlamalarında sıkça kullanılır",
+      "difficultyLevel": 2,
+      "frequency": "medium"
+    },
+    {
+      "id": 11,
+      "word": "substantial",
+      "type": "adjective",
+      "phonetic": "/səbˈstænʃəl/",
+      "meanings": {
+        "primary": ["büyük", "önemli"],
+        "secondary": ["esaslı", "sağlam", "hatırı sayılır"]
+      },
+      "synonyms": ["considerable", "extensive", "significant", "major"],
+      "antonyms": ["minor", "trivial", "insignificant", "small"],
+      "exampleSentence": "She inherited a substantial fortune from her grandmother.",
+      "sentenceTranslation": "Büyükannesinden önemli miktarda miras kaldı.",
+      "otherForms": {
+        "adverb": "substantially"
+      },
+      "tips": "Miktar ve önem vurgusunda kullanılır",
+      "difficultyLevel": 3,
+      "frequency": "high"
+    },
+    {
+      "id": 12,
+      "word": "precipitate",
+      "type": "verb",
+      "phonetic": "/prɪˈsɪpɪteɪt/",
+      "meanings": {
+        "primary": ["hızlandırmak", "yağmak", "çökmek"],
+        "secondary": ["tetiklemek", "sebep olmak"]
+      },
+      "synonyms": ["accelerate", "hasten", "trigger", "cause"],
+      "antonyms": ["decelerate", "slow", "delay"],
+      "exampleSentence": "An unexpected invasion certainly precipitates a political crisis.",
+      "sentenceTranslation": "Beklenmeyen bir istila kesinlikle bir siyasi krizi hızlandırır.",
+      "otherForms": {
+        "noun": "precipitation",
+        "adjective": "precipitate"
+      },
+      "tips": "Hem kimyasal çökelme hem de olayları tetikleme anlamında kullanılır",
+      "difficultyLevel": 4,
+      "frequency": "low"
+    },
+    {
+      "id": 13,
+      "word": "quotation",
+      "type": "noun",
+      "phonetic": "/kwəʊˈteɪʃən/",
+      "meanings": {
+        "primary": ["alıntı", "aktarma"],
+        "secondary": ["söz", "iktibas"]
+      },
+      "synonyms": ["extract", "excerpt", "citation", "quote"],
+      "antonyms": ["original"],
+      "exampleSentence": "At the beginning of the book, there is a quotation from A. Lincoln.",
+      "sentenceTranslation": "Kitabın başında Abraham Lincoln'dan bir alıntı var.",
+      "otherForms": {
+        "verb": "quote"
+      },
+      "tips": "Akademik yazıda ve kaynak göstermede sıkça kullanılır",
+      "difficultyLevel": 2,
+      "frequency": "medium"
+    },
+    {
+      "id": 14,
+      "word": "realm",
+      "type": "noun",
+      "phonetic": "/relm/",
+      "meanings": {
+        "primary": ["alan", "saha", "krallık"],
+        "secondary": ["ülke", "memleket", "bölge"]
+      },
+      "synonyms": ["area", "region", "field", "domain"],
+      "antonyms": [],
+      "exampleSentence": "Her interests are in the realm of practical politics.",
+      "sentenceTranslation": "İlgi alanı güncel politika.",
+      "otherForms": {},
+      "tips": "Hem fiziksel hem de soyut alanlar için kullanılır",
+      "difficultyLevel": 3,
+      "frequency": "medium"
+    },
+    {
+      "id": 15,
+      "word": "legitimate",
+      "type": "adjective",
+      "phonetic": "/lɪˈdʒɪtɪmət/",
+      "meanings": {
+        "primary": ["yasal", "meşru"],
+        "secondary": ["kanuni", "haklı"]
+      },
+      "synonyms": ["legal", "lawful", "valid", "authorized"],
+      "antonyms": ["illegal", "illegitimate", "unlawful"],
+      "exampleSentence": "The army must give power back to the legitimate government.",
+      "sentenceTranslation": "Ordu, yetkiyi tekrar meşru hükümete vermeli.",
+      "otherForms": {
+        "verb": "legitimize",
+        "noun": "legitimacy",
+        "adverb": "legitimately"
+      },
+      "tips": "Hukuki ve toplumsal kabul görmüş durumlar için kullanılır",
+      "difficultyLevel": 3,
+      "frequency": "high"
+    },
+    {
+      "id": 16,
+      "word": "trifling",
+      "type": "adjective",
+      "phonetic": "/ˈtraɪflɪŋ/",
+      "meanings": {
+        "primary": ["önemsiz"],
+        "secondary": ["trivial", "öğnemsemez", "küçük"]
+      },
+      "synonyms": ["trivial", "unimportant", "insignificant", "minor"],
+      "antonyms": ["important", "significant", "major"],
+      "exampleSentence": "It was such a trifling sum of money to argue about.",
+      "sentenceTranslation": "Tartışmaya kadar önemsiz bir miktardı.",
+      "otherForms": {
+        "noun": "trifle",
+        "verb": "trifle"
+      },
+      "tips": "Küçük ve önemsiz şeyler için kullanılır",
+      "difficultyLevel": 3,
+      "frequency": "medium"
+    },
+    {
+      "id": 17,
+      "word": "abundant",
+      "type": "adjective",
+      "phonetic": "/əˈbʌndənt/",
+      "meanings": {
+        "primary": ["bol", "bereketli"],
+        "secondary": ["çok sayıda", "zengin"]
+      },
+      "synonyms": ["plentiful", "ample", "plenteous", "copious"],
+      "antonyms": ["scarce", "insufficient", "bare", "impoverished"],
+      "exampleSentence": "Cheap consumer goods are abundant in this region.",
+      "sentenceTranslation": "Bu bölgede ucuz ürünler boldur.",
+      "otherForms": {
+        "adverb": "abundantly",
+        "noun": "abundance"
+      },
+      "tips": "Bolluk ve bereket anlamında kullanılır",
+      "difficultyLevel": 2,
+      "frequency": "high"
+    },
+    {
+      "id": 18,
+      "word": "consecutive",
+      "type": "adjective",
+      "phonetic": "/kənˈsekjətɪv/",
+      "meanings": {
+        "primary": ["art arda", "birbirini takiben"],
+        "secondary": ["ardışık", "peş peşe"]
+      },
+      "synonyms": ["successive", "sequential", "subsequent", "continuous"],
+      "antonyms": ["discontinuous", "intermittent"],
+      "exampleSentence": "This is the first consecutive weekend that I've spent working.",
+      "sentenceTranslation": "Bu, çalışarak geçirdiğim ardı ardına ilk hafta sonu.",
+      "otherForms": {
+        "adverb": "consecutively"
+      },
+      "tips": "Kesintisiz ardışık olaylar için kullanılır",
+      "difficultyLevel": 3,
+      "frequency": "medium"
+    },
+    {
+      "id": 19,
+      "word": "deception",
+      "type": "noun",
+      "phonetic": "/dɪˈsepʃən/",
+      "meanings": {
+        "primary": ["aldatma", "hile", "dolap"],
+        "secondary": ["kandırma", "yanıltma"]
+      },
+      "synonyms": ["deceit", "fraud", "trickery", "dishonesty"],
+      "antonyms": ["honesty", "truth", "sincerity"],
+      "exampleSentence": "He was found guilty of obtaining money by deception.",
+      "sentenceTranslation": "Dolandırıcılıkla para elde etmekten suçlu bulundu.",
+      "otherForms": {
+        "verb": "deceive",
+        "adjective": "deceptive"
+      },
+      "tips": "Kasıtlı aldatma ve hile için kullanılır",
+      "difficultyLevel": 2,
+      "frequency": "medium"
+    },
+    {
+      "id": 20,
+      "word": "disperse",
+      "type": "verb",
+      "phonetic": "/dɪˈspɜːs/",
+      "meanings": {
+        "primary": ["dağıtmak", "dağılmak"],
+        "secondary": ["saçmak", "yaymak"]
+      },
+      "synonyms": ["scatter", "dispel", "diffuse", "dissipate"],
+      "antonyms": ["gather", "collect", "concentrate", "assemble"],
+      "exampleSentence": "Just after the rain came down, the clouds started to disperse.",
+      "sentenceTranslation": "Yağmur yağdıktan hemen sonra bulutlar dağılmaya başladı.",
+      "otherForms": {
+        "noun": "dispersion",
+        "adjective": "dispersed"
+      },
+      "tips": "Hem dağıtmak hem de dağılmak anlamında kullanılır",
+      "difficultyLevel": 2,
+      "frequency": "medium"
+    }
+  ],
+  "statistics": {
+    "totalVerbs": 6,
+    "totalNouns": 3,
+    "totalAdjectives": 11,
+    "averageDifficulty": 2.5
+  }
+}
