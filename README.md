@@ -6,7 +6,7 @@ Modern ve etkileşimli YDS kelime öğrenme platformu. Bilimsel öğrenme yönte
 
 ```
 yds/
-├── game.html              # TEK OYUN DOSYASI (tüm setler için)
+├── index.html              # TEK OYUN DOSYASI (tüm setler için)
 ├── prompt.txt             # Proje tanım ve geliştirme kılavuzu
 ├── README.md              # Bu dosya
 └── images/
@@ -27,7 +27,7 @@ yds/
 
 ### 1. Oyunu Başlat
 ```bash
-# Ana klasördeki game.html dosyasını aç
+# Ana klasördeki index.html dosyasını aç
 # Çift tıkla veya tarayıcıya sürükle bırak
 ```
 

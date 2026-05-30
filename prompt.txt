@@ -109,7 +109,7 @@ Bu prompt size verildiğinde, belirtilen klasördeki kelime resimlerini analiz e
 ### Klasör Yapısı
 ```
 yds/
-├── game.html              # TEK OYUN DOSYASI (tüm setler için)
+├── index.html              # TEK OYUN DOSYASI (tüm setler için)
 └── images/
     ├── 1/
     │   └── vocabulary.json
@@ -119,7 +119,7 @@ yds/
 ```
 
 ### Oyun Nasıl Çalışır
-1. Kullanıcı `game.html` açar (ana klasörde)
+1. Kullanıcı `index.html` açar (ana klasörde)
 2. Oyun otomatik olarak `images/` altındaki tüm setleri tarar (1-100)
 3. Kullanıcı bir set seçer
 4. Oyun o setin `vocabulary.json` dosyasını yükler
@@ -159,7 +159,7 @@ SİZ:
    - Ortalama Zorluk: 2.7
 
 ✅ İşlem tamamlandı! 
-Tarayıcıda game.html'i yenileyin, Set 2 görünecek.
+Tarayıcıda index.html'i yenileyin, Set 2 görünecek.
 ```
 
 ---

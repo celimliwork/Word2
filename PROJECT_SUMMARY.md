@@ -17,7 +17,7 @@ YDS kelime öğrenimini eğlenceli, etkili ve sistematik hale getiren modern bir
 
 | Dosya | Boyut | Açıklama |
 |-------|--------|----------|
-| `game.html` | ~30 KB | ✅ TEK OYUN DOSYASI (tüm setler için) |
+| `index.html` | ~30 KB | ✅ TEK OYUN DOSYASI (tüm setler için) |
 | `prompt.txt` | 5.3 KB | ✅ GELİŞTİRİLDİ - Gelecek geliştirmeler için detaylı kılavuz |
 | `README.md` | 5.4 KB | 📚 Kapsamlı proje dokümantasyonu |
 | `QUICKSTART.md` | 6.5 KB | ⚡ 5 dakikada başlangıç kılavuzu |
@@ -33,8 +33,8 @@ YDS kelime öğrenimini eğlenceli, etkili ve sistematik hale getiren modern bir
 | 3 × WhatsApp Image | ~1 MB | 📸 Kaynak resimler |
 
 **Mimari Değişiklik:**
-- ❌ Her klasörde ayrı game.html YOK
-- ✅ Ana klasörde TEK game.html VAR
+- ❌ Her klasörde ayrı index.html YOK
+- ✅ Ana klasörde TEK index.html VAR
 - ✅ Otomatik set tespiti
 - ✅ Dinamik JSON yükleme
 
@@ -97,7 +97,7 @@ YDS kelime öğrenimini eğlenceli, etkili ve sistematik hale getiren modern bir
 
 ### Yöntem 1: Doğrudan Oyun (EN KOLAY)
 ```
-Ana klasördeki game.html dosyasına çift tıkla
+Ana klasördeki index.html dosyasına çift tıkla
 ```
 
 ### Yöntem 2: Batch Script
@@ -108,7 +108,7 @@ start.bat çalıştır → Seçenek 1
 ### Yöntem 3: Manuel
 ```
 1. Tarayıcı aç
-2. File > Open > game.html
+2. File > Open > index.html
 3. Set seç (örn: Set 1)
 4. Mod seç ve başla!
 ```
@@ -127,7 +127,7 @@ start.bat çalıştır → Seçenek 1
 ```
 yds/
 │
-├── 🎮 game.html            (TEK OYUN - TÜM SETLER)
+├── 🎮 index.html            (TEK OYUN - TÜM SETLER)
 │
 ├── 📄 Dokümantasyon
 │   ├── prompt.txt          (Sistem tanımı - GELİŞTİRİLDİ)
@@ -303,7 +303,7 @@ TOPLAM: 1000+ Kelime → YDS'ye HAZIR! 🎓
 
 ## 📞 Hızlı Referans
 
-**Oyunu Başlat:** `images/1/game.html`  
+**Oyunu Başlat:** `images/1/index.html`  
 **Dokümantasyon:** `README.md`  
 **Hızlı Kılavuz:** `QUICKSTART.md`  
 **Yeni Set Ekle:** `process_vocabulary.py`  

@@ -197,7 +197,7 @@ def save_vocabulary_json(folder_path, set_number, words_data):
 
 def copy_game_html(source_folder, target_folder):
     """NOT: Artık oyun dosyası ana klasörde, kopyalamaya gerek yok"""
-    print(f"ℹ️  Oyun dosyası ana klasörde (game.html)")
+    print(f"ℹ️  Oyun dosyası ana klasörde (index.html)")
     print(f"ℹ️  Yeni set otomatik olarak algılanacak, oyunu yenileyin")
     return
 
@@ -251,12 +251,12 @@ def main():
     save_vocabulary_json(set_folder, set_number, words_data)
     
     # Bilgilendirme
-    print("\nℹ️  Oyun dosyası ana klasörde (game.html)")
-    print("ℹ️  Tarayıcıda game.html'i yenileyin, yeni set otomatik görünecek")
+    print("\nℹ️  Oyun dosyası ana klasörde (index.html)")
+    print("ℹ️  Tarayıcıda index.html'i yenileyin, yeni set otomatik görünecek")
     
     print("\n" + "=" * 60)
     print("✅ İşlem tamamlandı!")
-    print(f"🎮 Oyunu başlatmak için: ana klasördeki game.html")
+    print(f"🎮 Oyunu başlatmak için: ana klasördeki index.html")
     print(f"🔄 Yeni seti görmek için: Sayfayı yenile (F5)")
     print("=" * 60)
 

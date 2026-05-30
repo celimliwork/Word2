@@ -24,7 +24,7 @@ goto menu
 :start_game
 echo.
 echo 🎮 Oyun başlatılıyor...
-start "" "game.html"
+start "" "index.html"
 echo ✅ Tarayıcınızda açıldı!
 timeout /t 2 >nul
 goto menu

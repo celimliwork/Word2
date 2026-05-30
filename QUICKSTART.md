@@ -4,7 +4,7 @@
 
 ### 1️⃣ İlk Kullanım
 
-**Adım 1:** Ana klasördeki `game.html` dosyasına çift tıkla
+**Adım 1:** Ana klasördeki `index.html` dosyasına çift tıkla
 
 **Adım 2:** Bir kelime seti seç (örn: Set 1)
 
@@ -58,7 +58,7 @@
 
 ### Oyun Akışı
 
-1. **Oyunu Aç:** `game.html` dosyasına çift tıkla
+1. **Oyunu Aç:** `index.html` dosyasına çift tıkla
 2. **Set Seç:** Mevcut setlerden birini seç
 3. **Mod Seç:** Öğrenme modunu tıkla
 4. **Soruyu Oku:** Ekranda gösterilen soruyu oku
@@ -110,7 +110,7 @@
    - Ortak şemayı koru!
 
 4. **Oyunu Yenile**
-   - `game.html` sayfasını yenile (F5)
+   - `index.html` sayfasını yenile (F5)
    - Set 2 otomatik görünür!
 
 5. **Oyna!**
