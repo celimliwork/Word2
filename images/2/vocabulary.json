@@ -1,0 +1,420 @@
+{
+  "setInfo": {
+    "setId": 2,
+    "title": "YDS 60 Günde - 2. Gün",
+    "totalWords": 20,
+    "difficulty": "intermediate",
+    "category": "general",
+    "createdAt": "2026-05-30",
+    "source": "YDS Kelime Kitabı",
+    "tags": ["yds", "vocabulary", "english", "day2"]
+  },
+  "words": [
+    {
+      "id": 1,
+      "word": "relentlessly",
+      "type": "adverb",
+      "phonetic": "/rɪˈlentləsli/",
+      "meanings": {
+        "primary": ["amansızca", "sürekli şekilde"],
+        "secondary": ["dur durak bilmeden"]
+      },
+      "synonyms": ["continuously", "constantly"],
+      "antonyms": ["temporarily"],
+      "exampleSentence": "She has campaigned relentlessly for her husband's release from prison.",
+      "sentenceTranslation": "Eşinin hapishaneden çıkması için dur durak bilmeden çalıştı.",
+      "otherForms": {
+        "adjective": "relentless"
+      },
+      "tips": "Relentless: amansız, dur durak bilmeyen",
+      "difficultyLevel": 3,
+      "frequency": "medium"
+    },
+    {
+      "id": 2,
+      "word": "migration",
+      "type": "noun",
+      "phonetic": "/maɪˈɡreɪʃn/",
+      "meanings": {
+        "primary": ["göç"],
+        "secondary": []
+      },
+      "synonyms": ["immigration", "movement"],
+      "antonyms": ["remain", "stay"],
+      "exampleSentence": "There was a mass migration of poverty-struck farmers into the cities.",
+      "sentenceTranslation": "Fakirlikten etkilenen çiftçilerin şehre büyük göçü oldu.",
+      "otherForms": {
+        "verb": "migrate",
+        "adjective": "migratory",
+        "noun": "migrant"
+      },
+      "tips": "Migrate (v): göç etmek; migrant (n): göçmen",
+      "difficultyLevel": 2,
+      "frequency": "high"
+    },
+    {
+      "id": 3,
+      "word": "nullify",
+      "type": "verb",
+      "phonetic": "/ˈnʌlɪfaɪ/",
+      "meanings": {
+        "primary": ["iptal etmek", "geçersiz kılmak"],
+        "secondary": []
+      },
+      "synonyms": ["cancel", "annul", "invalidate", "abolish", "do away with"],
+      "antonyms": ["enact", "legislate"],
+      "exampleSentence": "The state death penalty law was nullified in 1977.",
+      "sentenceTranslation": "İdam cezası yasası 1977'de kaldırıldı.",
+      "otherForms": {},
+      "tips": "Resmi yasal bağlamda sık kullanılır",
+      "difficultyLevel": 3,
+      "frequency": "medium"
+    },
+    {
+      "id": 4,
+      "word": "obesity",
+      "type": "noun",
+      "phonetic": "/oʊˈbiːsəti/",
+      "meanings": {
+        "primary": ["aşırı şişmanlık", "obezite"],
+        "secondary": []
+      },
+      "synonyms": ["fatness", "plumpness"],
+      "antonyms": [],
+      "exampleSentence": "A diet that is high in fat can lead to obesity.",
+      "sentenceTranslation": "Yağ oranı yüksek bir beslenme obeziteye yol açabilir.",
+      "otherForms": {
+        "adjective": "obese"
+      },
+      "tips": "Obese (adj): obez, aşırı kilolu",
+      "difficultyLevel": 2,
+      "frequency": "high"
+    },
+    {
+      "id": 5,
+      "word": "poison",
+      "type": "noun",
+      "phonetic": "/ˈpɔɪzn/",
+      "meanings": {
+        "primary": ["zehir"],
+        "secondary": []
+      },
+      "synonyms": ["venom", "toxin"],
+      "antonyms": [],
+      "exampleSentence": "Her drink has been laced with a deadly poison.",
+      "sentenceTranslation": "İçeceğine öldürücü bir zehir katılmış.",
+      "otherForms": {
+        "verb": "poison",
+        "adjective": "poisonous"
+      },
+      "tips": "Poisonous (adj): zehirli",
+      "difficultyLevel": 2,
+      "frequency": "high"
+    },
+    {
+      "id": 6,
+      "word": "susceptible",
+      "type": "adjective",
+      "phonetic": "/səˈseptəbl/",
+      "meanings": {
+        "primary": ["hassas", "duyarlı"],
+        "secondary": ["kolay mikrop kapabilen"]
+      },
+      "synonyms": ["sensitive", "vulnerable", "fragile"],
+      "antonyms": ["indifferent", "formidable", "strong"],
+      "exampleSentence": "These plants are particularly susceptible to frost.",
+      "sentenceTranslation": "Bu bitkiler donmaya karşı aşırı hassastır.",
+      "otherForms": {
+        "noun": "susceptibility"
+      },
+      "tips": "Susceptible to: -e karşı hassas/duyarlı",
+      "difficultyLevel": 3,
+      "frequency": "high"
+    },
+    {
+      "id": 7,
+      "word": "specify",
+      "type": "verb",
+      "phonetic": "/ˈspesɪfaɪ/",
+      "meanings": {
+        "primary": ["belirlemek"],
+        "secondary": ["açıkça belirtmek"]
+      },
+      "synonyms": ["identify", "state"],
+      "antonyms": [],
+      "exampleSentence": "He said that we should meet, but didn't specify a time.",
+      "sentenceTranslation": "Buluşmamız gerektiğini söyledi ama bir zaman belirtmedi.",
+      "otherForms": {
+        "noun": "specification"
+      },
+      "tips": "Specify something: bir şeyi net olarak belirtmek",
+      "difficultyLevel": 2,
+      "frequency": "high"
+    },
+    {
+      "id": 8,
+      "word": "supplant",
+      "type": "verb",
+      "phonetic": "/səˈplænt/",
+      "meanings": {
+        "primary": ["yerini almak"],
+        "secondary": ["ikame etmek"]
+      },
+      "synonyms": ["replace", "take the place of"],
+      "antonyms": [],
+      "exampleSentence": "In most offices, the typewriter has now been supplanted by the computer.",
+      "sentenceTranslation": "Birçok ofiste, daktilonun yerini artık bilgisayar aldı.",
+      "otherForms": {},
+      "tips": "Genellikle eski bir şeyin yerine yenisi geçerken kullanılır",
+      "difficultyLevel": 3,
+      "frequency": "medium"
+    },
+    {
+      "id": 9,
+      "word": "hostile",
+      "type": "adjective",
+      "phonetic": "/ˈhɒstaɪl/",
+      "meanings": {
+        "primary": ["düşmanca", "saldırgan"],
+        "secondary": ["-e karşı"]
+      },
+      "synonyms": ["unfriendly"],
+      "antonyms": ["friendly"],
+      "exampleSentence": "I'm not hostile to the idea of such a change.",
+      "sentenceTranslation": "Böyle bir değişiklik fikrine karşı değilim.",
+      "otherForms": {
+        "noun": "hostility"
+      },
+      "tips": "Hostile to/towards: -e düşmanca, karşı",
+      "difficultyLevel": 2,
+      "frequency": "high"
+    },
+    {
+      "id": 10,
+      "word": "dilate",
+      "type": "verb",
+      "phonetic": "/daɪˈleɪt/",
+      "meanings": {
+        "primary": ["genişlemek"],
+        "secondary": ["büyümek"]
+      },
+      "synonyms": ["expand", "enlarge"],
+      "antonyms": ["minimize", "compress"],
+      "exampleSentence": "The pupils of the eyes dilate as darkness increases.",
+      "sentenceTranslation": "Karanlık arttıkça göz bebekleri büyür.",
+      "otherForms": {
+        "noun": "dilation"
+      },
+      "tips": "Tıbbi bağlamda göz bebeği genişlemesi için sık kullanılır",
+      "difficultyLevel": 3,
+      "frequency": "medium"
+    },
+    {
+      "id": 11,
+      "word": "deal",
+      "type": "noun",
+      "phonetic": "/diːl/",
+      "meanings": {
+        "primary": ["anlaşma", "uzlaşma"],
+        "secondary": []
+      },
+      "synonyms": ["agreement"],
+      "antonyms": ["disagreement"],
+      "exampleSentence": "I'll make/do a deal with you - you wash the car and I'll let you use it tonight.",
+      "sentenceTranslation": "Seninle bir anlaşma yapacağım. Sen arabayı yıka ben de bu gece arabayı kullanmana izin vereyim.",
+      "otherForms": {
+        "noun": "dealer"
+      },
+      "tips": "Make/do a deal: anlaşma yapmak",
+      "difficultyLevel": 2,
+      "frequency": "high"
+    },
+    {
+      "id": 12,
+      "word": "decade",
+      "type": "noun",
+      "phonetic": "/ˈdekeɪd/",
+      "meanings": {
+        "primary": ["on yıl"],
+        "secondary": []
+      },
+      "synonyms": ["a 10-year period"],
+      "antonyms": [],
+      "exampleSentence": "He has been working here for a decade.",
+      "sentenceTranslation": "Burada 10 yıldır çalışıyor.",
+      "otherForms": {},
+      "tips": "10 yıllık süreyi ifade eder",
+      "difficultyLevel": 1,
+      "frequency": "very high"
+    },
+    {
+      "id": 13,
+      "word": "contempt",
+      "type": "noun",
+      "phonetic": "/kənˈtempt/",
+      "meanings": {
+        "primary": ["aşağılama", "küçük görme"],
+        "secondary": ["karşı gelme"]
+      },
+      "synonyms": ["abhorrence", "disdain", "scorn"],
+      "antonyms": ["respect", "admire"],
+      "exampleSentence": "Pam stared at the other friends with total contempt.",
+      "sentenceTranslation": "Pam diğer arkadaşlarına tamamen küçümseyerek baktı.",
+      "otherForms": {
+        "adjective": "contemptible"
+      },
+      "tips": "With contempt: küçümseyerek",
+      "difficultyLevel": 3,
+      "frequency": "medium"
+    },
+    {
+      "id": 14,
+      "word": "content",
+      "type": "adjective",
+      "phonetic": "/kənˈtent/",
+      "meanings": {
+        "primary": ["hoşnut", "memnun"],
+        "secondary": []
+      },
+      "synonyms": ["satisfied", "pleased"],
+      "antonyms": ["dissatisfied"],
+      "exampleSentence": "He seems fairly content with his life.",
+      "sentenceTranslation": "Hayatından oldukça memnun görünüyor.",
+      "otherForms": {
+        "adjective": "contented",
+        "adverb": "contentedly"
+      },
+      "tips": "Content with: -den memnun; content (n): içerik",
+      "difficultyLevel": 2,
+      "frequency": "high"
+    },
+    {
+      "id": 15,
+      "word": "punctual",
+      "type": "adjective",
+      "phonetic": "/ˈpʌŋktʃuəl/",
+      "meanings": {
+        "primary": ["dakik", "tam vaktinde"],
+        "secondary": []
+      },
+      "synonyms": ["on time", "prompt"],
+      "antonyms": ["belated"],
+      "exampleSentence": "He's always punctual.",
+      "sentenceTranslation": "O her zaman dakiktir.",
+      "otherForms": {
+        "adverb": "punctually",
+        "noun": "punctuality"
+      },
+      "tips": "Punctuality (n): dakiklik",
+      "difficultyLevel": 2,
+      "frequency": "high"
+    },
+    {
+      "id": 16,
+      "word": "adjourn",
+      "type": "verb",
+      "phonetic": "/əˈdʒɜːrn/",
+      "meanings": {
+        "primary": ["ertelemek", "ara vermek"],
+        "secondary": []
+      },
+      "synonyms": ["postpone", "delay", "defer", "suspend"],
+      "antonyms": ["complete", "terminate"],
+      "exampleSentence": "The meeting was adjourned until Tuesday.",
+      "sentenceTranslation": "Toplantı Salı gününe kadar ertelendi.",
+      "otherForms": {
+        "noun": "adjournment"
+      },
+      "tips": "Resmi toplantılarda sık kullanılır",
+      "difficultyLevel": 3,
+      "frequency": "medium"
+    },
+    {
+      "id": 17,
+      "word": "assign",
+      "type": "verb",
+      "phonetic": "/əˈsaɪn/",
+      "meanings": {
+        "primary": ["ayırmak", "tahsis etmek", "görev vermek"],
+        "secondary": []
+      },
+      "synonyms": ["allocate", "allot", "appoint"],
+      "antonyms": [],
+      "exampleSentence": "UN troops were assigned the task of rebuilding the hospital.",
+      "sentenceTranslation": "Birleşmiş milletler birliklerine hastaneyi yeniden inşa etme görevi verildi.",
+      "otherForms": {
+        "noun": "assignment"
+      },
+      "tips": "Assign someone to something: birine görev vermek",
+      "difficultyLevel": 2,
+      "frequency": "high"
+    },
+    {
+      "id": 18,
+      "word": "track",
+      "type": "verb",
+      "phonetic": "/træk/",
+      "meanings": {
+        "primary": ["takip etmek"],
+        "secondary": ["izlemek"]
+      },
+      "synonyms": ["follow", "trace"],
+      "antonyms": [],
+      "exampleSentence": "The military can use radar satellites to track targets through clouds and at night.",
+      "sentenceTranslation": "Ordu, bulutların içinden ve geceleri hedefleri takip etmek için radar uydular kullanabilir.",
+      "otherForms": {
+        "noun": "track"
+      },
+      "tips": "Track down: bulmak için takip etmek",
+      "difficultyLevel": 2,
+      "frequency": "high"
+    },
+    {
+      "id": 19,
+      "word": "treasure",
+      "type": "verb",
+      "phonetic": "/ˈtreʒər/",
+      "meanings": {
+        "primary": ["değer vermek"],
+        "secondary": ["kıymetini bilmek"]
+      },
+      "synonyms": ["cherish", "value"],
+      "antonyms": [],
+      "exampleSentence": "This pen that my grandfather gave me is one of my most treasured possessions.",
+      "sentenceTranslation": "Dedemin verdiği bu kalem en değer verdiğim eşyalarımdan biridir.",
+      "otherForms": {
+        "noun": "treasure"
+      },
+      "tips": "Treasured possessions: en değer verilen eşyalar; treasury (n): hazine",
+      "difficultyLevel": 2,
+      "frequency": "medium"
+    },
+    {
+      "id": 20,
+      "word": "threat",
+      "type": "noun",
+      "phonetic": "/θret/",
+      "meanings": {
+        "primary": ["tehdit", "korkutma"],
+        "secondary": ["gözdağı", "tehlike"]
+      },
+      "synonyms": ["menace"],
+      "antonyms": [],
+      "exampleSentence": "The threat of jail failed to deter him from petty crime.",
+      "sentenceTranslation": "Hapis tehdidi onu ufak tefek suçlar işlemekten alıkoymadı.",
+      "otherForms": {
+        "adjective": "threatening"
+      },
+      "tips": "Threat to: -e tehdit; threat of: -nin tehdidi",
+      "difficultyLevel": 2,
+      "frequency": "high"
+    }
+  ],
+  "statistics": {
+    "totalVerbs": 8,
+    "totalNouns": 7,
+    "totalAdjectives": 4,
+    "totalAdverbs": 1,
+    "averageDifficulty": 2.4
+  }
+}

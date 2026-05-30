@@ -422,6 +422,53 @@
             margin-bottom: 12px;
         }
 
+        .speakable {
+            cursor: pointer;
+            border-bottom: 2px dotted rgba(102, 126, 234, 0.5);
+            transition: color 0.2s, border-color 0.2s;
+            position: relative;
+        }
+
+        .speakable:hover {
+            color: #764ba2;
+            border-bottom-color: #764ba2;
+        }
+
+        .speakable.speaking {
+            color: #764ba2;
+            border-bottom-color: #764ba2;
+        }
+
+        .speakable::after {
+            content: '🔊';
+            font-size: 0.45em;
+            opacity: 0;
+            margin-left: 6px;
+            vertical-align: middle;
+            transition: opacity 0.2s;
+        }
+
+        .speakable:hover::after,
+        .speakable.speaking::after {
+            opacity: 0.7;
+        }
+
+        .word-display .speakable {
+            border-bottom: none;
+        }
+
+        .word-display .speakable::after {
+            display: block;
+            font-size: 14px;
+            margin-top: 8px;
+            opacity: 0.5;
+        }
+
+        .word-display .speakable:hover::after,
+        .word-display .speakable.speaking::after {
+            opacity: 1;
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 20px;
@@ -554,6 +601,93 @@
         let reviewIndex = 0;
         let reviewCorrect = 0;
         let modeListenersAttached = false;
+        let preferredVoice = null;
+        let speakingElement = null;
+
+        function initSpeech() {
+            if (!('speechSynthesis' in window)) return;
+
+            const pickVoice = () => {
+                const voices = speechSynthesis.getVoices();
+                preferredVoice =
+                    voices.find(v => v.lang === 'en-US' && v.localService) ||
+                    voices.find(v => v.lang.startsWith('en-US')) ||
+                    voices.find(v => v.lang.startsWith('en-')) ||
+                    voices.find(v => v.lang.startsWith('en')) ||
+                    null;
+            };
+
+            pickVoice();
+            speechSynthesis.onvoiceschanged = pickVoice;
+        }
+
+        function escapeHtml(text) {
+            return String(text)
+                .replace(/&/g, '&amp;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;')
+                .replace(/</g, '&lt;');
+        }
+
+        function speakableHtml(word, display = null) {
+            const safeWord = escapeHtml(word);
+            const safeDisplay = escapeHtml(display ?? word);
+            return `<span class="speakable" data-speak="${safeWord}" title="Telafuz için tıkla">${safeDisplay}</span>`;
+        }
+
+        function speakWord(text, element = null) {
+            if (!('speechSynthesis' in window) || !text) return;
+
+            speechSynthesis.cancel();
+
+            if (speakingElement) {
+                speakingElement.classList.remove('speaking');
+                speakingElement = null;
+            }
+
+            const utterance = new SpeechSynthesisUtterance(text.trim());
+            utterance.lang = 'en-US';
+            utterance.rate = 0.92;
+            utterance.pitch = 1;
+
+            if (preferredVoice) {
+                utterance.voice = preferredVoice;
+            }
+
+            if (element) {
+                speakingElement = element;
+                element.classList.add('speaking');
+                utterance.onend = () => {
+                    element.classList.remove('speaking');
+                    if (speakingElement === element) speakingElement = null;
+                };
+                utterance.onerror = () => {
+                    element.classList.remove('speaking');
+                    if (speakingElement === element) speakingElement = null;
+                };
+            }
+
+            speechSynthesis.speak(utterance);
+        }
+
+        function attachSpeechListeners() {
+            const gameArea = document.getElementById('gameArea');
+            if (gameArea.dataset.speechBound) return;
+            gameArea.dataset.speechBound = '1';
+
+            gameArea.addEventListener('click', (event) => {
+                const target = event.target.closest('.speakable');
+                if (!target) return;
+
+                event.preventDefault();
+                event.stopPropagation();
+                speakWord(target.dataset.speak || target.textContent, target);
+            }, true);
+        }
+
+        function isEnglishSpeakableMode() {
+            return ['meaning-to-word', 'fill-blank', 'synonym', 'antonym'].includes(currentMode);
+        }
 
         function loadProgress() {
             try {
@@ -708,8 +842,15 @@
         }
 
         // Sayfa yüklendiğinde setleri tespit et
-        window.addEventListener('DOMContentLoaded', detectAvailableSets);
-        window.addEventListener('beforeunload', () => saveProgress());
+        window.addEventListener('DOMContentLoaded', () => {
+            initSpeech();
+            attachSpeechListeners();
+            detectAvailableSets();
+        });
+        window.addEventListener('beforeunload', () => {
+            speechSynthesis.cancel();
+            saveProgress();
+        });
 
         async function detectAvailableSets() {
             const setsLoading = document.getElementById('setsLoading');
@@ -933,7 +1074,7 @@
 
         function renderWordToMeaning(word) {
             renderGameContent(`
-                <div class="question">"${word.word.toUpperCase()}" kelimesinin anlamı nedir?</div>
+                <div class="question">${speakableHtml(word.word, word.word.toUpperCase())} kelimesinin anlamı nedir?</div>
                 <div class="hint">(${word.type})</div>
                 <div class="options" id="options"></div>
                 <button class="next-btn" onclick="nextQuestion()" disabled id="nextBtn">Sonraki Soru →</button>
@@ -969,7 +1110,7 @@
             }
 
             renderGameContent(`
-                <div class="question">"${word.word.toUpperCase()}" kelimesinin eş anlamlısı hangisidir?</div>
+                <div class="question">${speakableHtml(word.word, word.word.toUpperCase())} kelimesinin eş anlamlısı hangisidir?</div>
                 <div class="hint">${word.meanings.primary[0]}</div>
                 <div class="options" id="options"></div>
                 <button class="next-btn" onclick="nextQuestion()" disabled id="nextBtn">Sonraki Soru →</button>
@@ -993,7 +1134,7 @@
             }
 
             renderGameContent(`
-                <div class="question">"${word.word.toUpperCase()}" kelimesinin zıt anlamlısı hangisidir?</div>
+                <div class="question">${speakableHtml(word.word, word.word.toUpperCase())} kelimesinin zıt anlamlısı hangisidir?</div>
                 <div class="hint">${word.meanings.primary[0]}</div>
                 <div class="options" id="options"></div>
                 <button class="next-btn" onclick="nextQuestion()" disabled id="nextBtn">Sonraki Soru →</button>
@@ -1022,9 +1163,9 @@
             renderGameContent(`
                 <div class="flash-card" id="flashCard" onclick="flipCard()">
                     <div class="card-front">
-                        <div class="word-display">${word.word.toUpperCase()}</div>
+                        <div class="word-display">${speakableHtml(word.word, word.word.toUpperCase())}</div>
                         <div class="type-display">(${word.type})</div>
-                        <p style="color: #999; margin-top: 20px;">Kartı çevirmek için tıkla</p>
+                        <p style="color: #999; margin-top: 20px;">Kelimeye tıkla: telaffuz · Kartın boş alanına tıkla: çevir</p>
                     </div>
                     <div class="card-back">
                         <div class="meaning-display">${word.meanings.primary.join(', ')}</div>
@@ -1078,7 +1219,13 @@
             options.forEach(option => {
                 const div = document.createElement('div');
                 div.className = 'option';
-                div.textContent = option;
+
+                if (isEnglishSpeakableMode()) {
+                    div.innerHTML = speakableHtml(option);
+                } else {
+                    div.textContent = option;
+                }
+
                 div.onclick = () => checkAnswer(div, option, correctAnswer);
                 optionsContainer.appendChild(div);
             });
